@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import argparse
 import logging
 import uuid
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 
 from approval_checker import ApprovalChecker
 from config import Settings, get_rss_sources, setup_logging
@@ -15,12 +17,15 @@ from rss_fetcher import RSSFetcher
 from storage_manager import StorageManager
 from topic_selector import TopicSelector
 
+if TYPE_CHECKING:
+    from rss_fetcher import NewsItem
+
 
 logger = logging.getLogger("LinkedInAgent")
 
 
-def run() -> None:
-    """Execute one cycle of the autonomous approval workflow."""
+def run(mode: str = "auto") -> None:
+    """Execute one cycle of the workflow."""
     settings = Settings.from_env()
     setup_logging(
         settings.log_level,
@@ -30,7 +35,8 @@ def run() -> None:
     )
     logger.info("Starting LinkedIn agent run")
     logger.info(
-        "Runtime config: model=%s storage=%s log_file=%s",
+        "Runtime config: mode=%s model=%s storage=%s log_file=%s",
+        mode,
         settings.openai_model,
         settings.storage_file,
         settings.log_file,
@@ -55,18 +61,21 @@ def run() -> None:
             username=settings.imap_username,
             password=settings.imap_password,
         )
-        post_generator = PostGenerator(api_key=settings.openai_api_key, model=settings.openai_model)
-        linkedin_service = LinkedInService(
-            access_token=settings.linkedin_access_token,
-            author_urn=settings.linkedin_author_urn,
-            api_version=settings.linkedin_api_version,
-        )
 
         # State-machine entrypoint:
         # If no pending item exists, create a new draft and start approval flow.
         if not pending:
+            if mode == "check":
+                logger.info("No pending approval found. Check mode exiting without creating a draft.")
+                return
+
             logger.info("No pending approval found. Starting new topic discovery cycle.")
+            post_generator = PostGenerator(api_key=settings.openai_api_key, model=settings.openai_model)
             _start_new_cycle(settings, storage, email_service, post_generator)
+            return
+
+        if mode == "draft":
+            logger.info("Pending approval already exists. Draft mode will not create a new draft.")
             return
 
         approval_id = pending["approval_id"]
@@ -79,6 +88,11 @@ def run() -> None:
         # Positive decision finalizes the post and prevents future duplicate topic reuse.
         if result.decision == "APPROVE":
             logger.info("Decision received: APPROVE for ID=%s", approval_id)
+            linkedin_service = LinkedInService(
+                access_token=settings.linkedin_access_token,
+                author_urn=settings.linkedin_author_urn,
+                api_version=settings.linkedin_api_version,
+            )
             linkedin_result = linkedin_service.publish_text_post(pending["post_text"])
             storage.add_approved_post(
                 approval_id=approval_id,
@@ -108,6 +122,7 @@ def run() -> None:
             )
             return
 
+        post_generator = PostGenerator(api_key=settings.openai_api_key, model=settings.openai_model)
         regenerated = post_generator.regenerate(
             item=_pending_to_news_item(pending),
             previous_post=pending["post_text"],
@@ -178,7 +193,7 @@ def _start_new_cycle(
     logger.info("Created new pending approval ID=%s", approval_id)
 
 
-def _pending_to_news_item(pending: dict) -> "NewsItem":
+def _pending_to_news_item(pending: dict) -> NewsItem:
     from rss_fetcher import NewsItem
 
     # Regeneration API expects NewsItem shape, so we reconstruct from stored state.
@@ -191,5 +206,18 @@ def _pending_to_news_item(pending: dict) -> "NewsItem":
     )
 
 
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run the LinkedIn content agent.")
+    parser.add_argument(
+        "mode",
+        nargs="?",
+        choices=["auto", "draft", "check"],
+        default="auto",
+        help="auto preserves current behavior, draft only creates drafts, check only processes replies.",
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    run()
+    args = _parse_args()
+    run(mode=args.mode)

@@ -1,42 +1,42 @@
 # AI Content Creator for LinkedIn
 
-An approval-based LinkedIn posting agent.
+Approval-based LinkedIn posting agent for AI and RPA updates.
 
-It finds recent AI/RPA news, writes a LinkedIn post with OpenAI, emails you for approval, and publishes only after you approve.
+It fetches recent news, picks one topic, drafts a post with OpenAI, emails it to you for approval, and publishes only after you approve.
 
-## How It Works
+## Flow
 
 ```text
-RSS news -> OpenAI topic selection -> OpenAI post draft -> approval email -> LinkedIn post
+RSS news -> topic selection -> LinkedIn draft -> approval email -> LinkedIn publish
 ```
 
-The app is intentionally human-in-the-loop. It will not publish a new draft until you approve it by email.
+This project is intentionally human-in-the-loop. It will never publish a fresh draft without your approval.
 
 ## Project Files
 
-- `main.py` - runs one workflow step.
-- `config.py` - loads `.env` settings and validates them.
-- `rss_fetcher.py` - collects recent news topics from RSS feeds.
-- `topic_selector.py` - asks OpenAI to choose the best topic.
-- `post_generator.py` - asks OpenAI to write or rewrite the post.
-- `email_service.py` - sends the approval email.
-- `approval_checker.py` - checks your mailbox for `APPROVE` or `DENY`.
-- `linkedin_service.py` - publishes approved posts to LinkedIn.
-- `storage_manager.py` - stores pending/approved state in `storage.json`.
-- `check_setup.py` - checks whether `.env` looks ready.
+- `main.py` runs one workflow step.
+- `config.py` loads settings and validates them.
+- `rss_fetcher.py` collects recent news topics from RSS feeds.
+- `topic_selector.py` chooses the best topic with OpenAI.
+- `post_generator.py` writes or rewrites the LinkedIn post.
+- `email_service.py` sends the approval email.
+- `approval_checker.py` checks Gmail for `APPROVE` or `DENY`.
+- `linkedin_service.py` publishes approved posts to LinkedIn.
+- `storage_manager.py` manages persistent workflow state in `storage.json`.
+- `check_setup.py` validates your local `.env`.
 
 ## Requirements
 
-- Python 3.11 or 3.12 recommended.
-- OpenAI API key.
-- Gmail account with 2-Step Verification and an App Password.
-- LinkedIn Developer app with a 3-legged OAuth access token.
+- Python `3.11` or `3.12`
+- OpenAI API key
+- Gmail account with 2-Step Verification and an App Password
+- LinkedIn Developer app with a valid user access token
 
-Python 3.14 may show OpenAI/Pydantic compatibility warnings. Use 3.11 or 3.12 for the cleanest setup.
+Python `3.14` may show OpenAI or Pydantic warnings. Use `3.11` or `3.12` for the cleanest setup.
 
-## 1. Install
+## Local Setup
 
-Open PowerShell in this project folder:
+### 1. Install dependencies
 
 ```powershell
 python -m venv .venv
@@ -44,46 +44,42 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 2. Create `.env`
-
-Copy the example file:
+### 2. Create `.env`
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Then edit `.env` and fill in your real values.
+Then fill in your real values.
 
-## 3. Gmail Setup
+### 3. Gmail settings
 
-Use Gmail App Passwords, not your normal Gmail password.
+Use a Gmail App Password, not your normal Gmail password.
 
-1. Enable 2-Step Verification on your Google account.
-2. Create an App Password for Mail.
-3. Put that app password in:
-
-```env
-SMTP_PASSWORD=your_gmail_app_password
-IMAP_PASSWORD=your_gmail_app_password
-```
-
-For Gmail, these defaults are normally correct:
+Set these values:
 
 ```env
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
+SMTP_USERNAME=your_gmail_address@gmail.com
+SMTP_PASSWORD=your_gmail_app_password
+EMAIL_FROM=your_gmail_address@gmail.com
+EMAIL_TO=approver_email@gmail.com
+
 IMAP_HOST=imap.gmail.com
 IMAP_PORT=993
+IMAP_USERNAME=your_gmail_address@gmail.com
+IMAP_PASSWORD=your_gmail_app_password
 ```
 
-## 4. LinkedIn Setup
+### 4. LinkedIn settings
 
 In LinkedIn Developer Portal:
 
-1. Create or open your app.
-2. Enable **Share on LinkedIn**.
-3. Enable **Sign In with LinkedIn using OpenID Connect**.
-4. Generate a new 3-legged access token with these scopes:
+1. Open your app.
+2. Enable `Share on LinkedIn`.
+3. Enable `Sign In with LinkedIn using OpenID Connect`.
+4. Generate a user access token with these scopes:
 
 ```text
 openid
@@ -91,41 +87,28 @@ profile
 w_member_social
 ```
 
-`email` is optional.
-
-Put the new token in `.env`:
+Then put the token in `.env`:
 
 ```env
-LINKEDIN_ACCESS_TOKEN=your_new_access_token
+LINKEDIN_ACCESS_TOKEN=your_access_token
 ```
 
-Now get your LinkedIn API person id:
+Get your LinkedIn person id:
 
 ```powershell
 curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" https://api.linkedin.com/v2/userinfo
 ```
 
-The response contains `sub`:
-
-```json
-{
-  "name": "Your Name",
-  "sub": "7H_JpJb6pN"
-}
-```
-
-Use that value like this:
+Use the returned `sub` value:
 
 ```env
-LINKEDIN_AUTHOR_URN=urn:li:person:7H_JpJb6pN
+LINKEDIN_AUTHOR_URN=urn:li:person:YOUR_SUB_VALUE
 LINKEDIN_API_VERSION=202604
 ```
 
-Do not use your public LinkedIn profile URL id. Use the `sub` value returned by `/v2/userinfo`.
+Do not use your public LinkedIn profile URL id. Use the `sub` value from `/v2/userinfo`.
 
-## 5. Check Setup
-
-Run:
+### 5. Check local setup
 
 ```powershell
 python check_setup.py
@@ -137,53 +120,107 @@ Expected result:
 READY: .env has the required values and basic formats look valid.
 ```
 
-If it says `NOT READY`, fix the listed `.env` values first.
+## Manual Usage
 
-## 6. Run Manually
-
-First run:
+Run:
 
 ```powershell
 python main.py
 ```
 
-If no post is waiting for approval, this creates a new draft and emails it to you.
+Behavior:
 
-Approve the email by clicking the `Approve` link.
+1. If no draft is pending, the app creates one and emails it to you.
+2. If a draft is already pending, the app checks Gmail for your reply.
+3. If you approved it, the app publishes it to LinkedIn.
+4. If you denied it, the app rewrites the draft and emails a new version.
 
-Second run:
+Typical manual flow:
 
-```powershell
-python main.py
+1. Run `python main.py`
+2. Review the draft in email
+3. Approve or deny
+4. Run `python main.py` again
+
+## GitHub Actions
+
+The repo now uses two workflows:
+
+```text
+.github/workflows/linkedin-weekly-draft.yml
+.github/workflows/linkedin-approval-check.yml
 ```
 
-This checks your inbox, finds the approval, and publishes the post to LinkedIn.
+This keeps drafting and approval checks separate.
 
-If you click `Deny`, the next run rewrites the draft and emails a new version.
+Flow:
 
-## 7. Current Usage
+1. Sunday morning the draft workflow runs once.
+2. It creates a draft only if nothing is already pending.
+3. The approval-check workflow runs every 15 minutes.
+4. If you approve, it publishes the post.
+5. If you deny, it regenerates the draft and emails a new version.
 
-Right now this project is set up for local/manual runs.
+### Schedule
 
-Run `python main.py` whenever you want the agent to take the next workflow step.
+- Draft workflow: Sunday `03:30 UTC` / Sunday `09:00 AM IST`
+- Approval check workflow: Sunday only, every 15 minutes from `09:15 AM IST` onward
 
-Typical posting rhythm:
+### Required GitHub secrets
 
-1. Run `python main.py` to generate and email a draft.
-2. Approve or deny from email.
-3. Run `python main.py` again to publish or regenerate.
+Add these repository secrets:
 
-For future automation, run the same command from a scheduler or cloud job. The machine running it must have internet access and a valid `.env`.
+```text
+OPENAI_API_KEY
+SMTP_USERNAME
+SMTP_PASSWORD
+EMAIL_TO
+LINKEDIN_ACCESS_TOKEN
+LINKEDIN_AUTHOR_URN
+```
 
-## 8. Logs and State
+Optional overrides:
 
-Logs are written here:
+```text
+OPENAI_MODEL
+SMTP_HOST
+SMTP_PORT
+EMAIL_FROM
+IMAP_HOST
+IMAP_PORT
+IMAP_USERNAME
+IMAP_PASSWORD
+LINKEDIN_API_VERSION
+MAX_REGEN_ATTEMPTS
+LOG_LEVEL
+LOG_MAX_BYTES
+LOG_BACKUP_COUNT
+```
+
+Workflow defaults:
+
+- `EMAIL_FROM` falls back to `SMTP_USERNAME`
+- `IMAP_USERNAME` falls back to `SMTP_USERNAME`
+- `IMAP_PASSWORD` falls back to `SMTP_PASSWORD`
+- Gmail host and port defaults are already set
+
+### Important notes
+
+- Keep the repository private because `storage.json` is committed back to the repo to preserve pending state.
+- In GitHub repository settings, set Actions workflow permissions to `Read and write`.
+- The workflow uses repo secrets directly, not your local `.env`.
+- `python main.py` still works locally with the original behavior.
+- If you approve or deny outside the Sunday check window, the workflow will not process it automatically until the next Sunday unless you run it manually.
+
+## Logs and State
+
+Logs are written to:
 
 ```text
 logs/agent.log
 ```
 
-State is stored here:
+State is stored in:
 
 ```text
 storage.json
@@ -191,12 +228,12 @@ storage.json
 
 `storage.json` tracks:
 
-- topics already used
+- used topics
 - approved posts
-- the current pending approval
+- current pending approval
 - regeneration count
 
-To reset the app to a fresh state, replace `storage.json` with:
+To reset state:
 
 ```json
 {
@@ -209,7 +246,7 @@ To reset the app to a fresh state, replace `storage.json` with:
 
 ## Common Fixes
 
-### `NONEXISTENT_VERSION`
+### LinkedIn API version issue
 
 Set:
 
@@ -225,11 +262,11 @@ Generate a new LinkedIn token with:
 openid profile w_member_social
 ```
 
-### LinkedIn `/author` Validation Failed
+### LinkedIn author validation failed
 
 Your `LINKEDIN_AUTHOR_URN` does not match the authenticated token user.
 
-Call:
+Check with:
 
 ```powershell
 curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" https://api.linkedin.com/v2/userinfo
@@ -241,23 +278,13 @@ Then set:
 LINKEDIN_AUTHOR_URN=urn:li:person:SUB_VALUE
 ```
 
-### App Hangs While Checking Email
+### Email approval check times out
 
-The checker uses a 30-second IMAP timeout. If it repeatedly times out, check your Gmail app password, IMAP access, and internet connection.
+The IMAP checker uses a 30-second timeout. If it hangs repeatedly, check your Gmail app password, IMAP access, and network connection.
 
 ## Security
 
-- Never commit `.env`.
-- Never share your LinkedIn access token.
-- Use app passwords for Gmail.
-- Regenerate the LinkedIn token when it expires.
-
-## Clean Runtime Files
-
-These are generated automatically and can be deleted safely:
-
-- `__pycache__/`
-- `logs/agent.log`
-- old `.pyc` files
-
-Do not delete `.env` unless you want to reconfigure credentials.
+- Never commit `.env`
+- Never share your LinkedIn token
+- Use Gmail App Passwords
+- Regenerate the LinkedIn token when it expires

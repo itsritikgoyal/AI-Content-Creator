@@ -1,0 +1,79 @@
+name: LinkedIn Approval Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "45 3 * * 0"
+    - cron: "*/15 4-17 * * 0"
+    - cron: "0,15 18 * * 0"
+
+concurrency:
+  group: linkedin-approval-check
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ secrets.OPENAI_MODEL || 'gpt-4o-mini' }}
+
+      SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.gmail.com' }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT || '587' }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM || secrets.SMTP_USERNAME }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+
+      IMAP_HOST: ${{ secrets.IMAP_HOST || 'imap.gmail.com' }}
+      IMAP_PORT: ${{ secrets.IMAP_PORT || '993' }}
+      IMAP_USERNAME: ${{ secrets.IMAP_USERNAME || secrets.SMTP_USERNAME }}
+      IMAP_PASSWORD: ${{ secrets.IMAP_PASSWORD || secrets.SMTP_PASSWORD }}
+
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+      LINKEDIN_API_VERSION: ${{ secrets.LINKEDIN_API_VERSION || '202604' }}
+
+      STORAGE_FILE: storage.json
+      MAX_REGEN_ATTEMPTS: ${{ secrets.MAX_REGEN_ATTEMPTS || '3' }}
+      LOG_LEVEL: ${{ secrets.LOG_LEVEL || 'INFO' }}
+      LOG_FILE: logs/agent.log
+      LOG_MAX_BYTES: ${{ secrets.LOG_MAX_BYTES || '2097152' }}
+      LOG_BACKUP_COUNT: ${{ secrets.LOG_BACKUP_COUNT || '5' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check approval inbox
+        run: python main.py check
+
+      - name: Persist runtime state
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f storage.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: update agent state"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
