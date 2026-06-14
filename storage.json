@@ -5,7 +5,8 @@
     "how smart workplace tools drive enterprise digital transformation - big news network.com",
     "robotic process automation (rpa) market overview, key trends, and insights on top players - openpr.com",
     "uipath (path), deloitte expand collaboration to integrate test cloud into ascend platform - insider monkey",
-    "uipath shares surge with ai optimism ahead of earnings - techstock\u00b2"
+    "uipath shares surge with ai optimism ahead of earnings - techstock\u00b2",
+    "uipath transitions into critical infrastructure for agentic ai era - harianbasis.co"
   ],
   "approved_posts": [
     {
@@ -55,17 +56,16 @@
       "source_link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPeGtnZ0JycjMxMWl1U2N3VWozVTdKU1FqZW1CODNybkZscFZRRC1ocThpcXRKMWl3Vk81c2tPNXRKRDh0V0w3SUVRYTZXTlpFVmw0dnBqdHBiX1hTWmNoaEU5d2FhdWozSGFZclJaZm14dWZ6dlB0UG03dHJaa01BODZKNW1CYlYxTTBYMmlpR0pEQnp3RHdieA?oc=5",
       "linkedin_post_id": "urn:li:share:7469292993422839808",
       "approved_at_utc": "2026-06-07T07:43:42.577830+00:00"
+    },
+    {
+      "approval_id": "8d1249b4c276",
+      "topic_title": "UiPath Transitions Into Critical Infrastructure For Agentic AI Era - HarianBasis.co",
+      "post_text": "Automation is shifting gears. The rise of agentic AI is redefining how we think about enterprise infrastructure.\n\nUiPath\u2019s new role highlights essential strategies for automation professionals:\n\n- Prioritize integration: Ensure your AI agents seamlessly connect with existing workflows.\n- Focus on data integrity: Clean, structured data fuels effective AI decision-making.\n- Invest in scalability: Design systems that can adapt as business needs evolve.\n- Emphasize security: Protect sensitive data as automation becomes more pervasive.\n- Train your team: Equip staff with skills to operate and optimize new AI capabilities.\n\nWhat this means: As automation becomes foundational, aligning your strategies with agentic AI's potential is crucial.\n\nHow are you adapting your automation processes to leverage this new infrastructure? \n\n#AI #Automation #RPA #UiPath #EnterpriseAI",
+      "source_link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaWJpSXg4QUgwTHVELXJSRUM0eGZuVEkycFR5NG9UcjJ0RmtuNWo5YXI5dFFfQ3J0OW1KSlpLcE9aUHNzb0VjZWxQQWV1Q2VJVG5uNjgxN1U5XzV1dWtCaFNMeWFua1NORkc5ZHNpZElndkthYktKNGFkbW1PY2NuTXZlMG9EclZkYmlj?oc=5",
+      "linkedin_post_id": "urn:li:share:7471834991417679872",
+      "approved_at_utc": "2026-06-14T08:04:42.197434+00:00"
     }
   ],
-  "pending_approval": {
-    "approval_id": "8d1249b4c276",
-    "topic_title": "UiPath Transitions Into Critical Infrastructure For Agentic AI Era - HarianBasis.co",
-    "topic_summary": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaWJpSXg4QUgwTHVELXJSRUM0eGZuVEkycFR5NG9UcjJ0RmtuNWo5YXI5dFFfQ3J0OW1KSlpLcE9aUHNzb0VjZWxQQWV1Q2VJVG5uNjgxN1U5XzV1dWtCaFNMeWFua1NORkc5ZHNpZElndkthYktKNGFkbW1PY2NuTXZlMG9EclZkYmlj?oc=5\" target=\"_blank\">UiPath Transitions Into Critical Infrastructure For Agentic AI Era</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">HarianBasis.co</font>",
-    "source_link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaWJpSXg4QUgwTHVELXJSRUM0eGZuVEkycFR5NG9UcjJ0RmtuNWo5YXI5dFFfQ3J0OW1KSlpLcE9aUHNzb0VjZWxQQWV1Q2VJVG5uNjgxN1U5XzV1dWtCaFNMeWFua1NORkc5ZHNpZElndkthYktKNGFkbW1PY2NuTXZlMG9EclZkYmlj?oc=5",
-    "selection_reason": "This topic focuses on the transformative impact of agentic AI on enterprise automation, which is highly relevant for automation builders, AI agents practitioners, and enterprise AI operators. It emphasizes practical applications and the evolving landscape of automation, aligning with the interests of professionals seeking to understand implementation lessons and modernization strategies.",
-    "post_text": "Automation is shifting gears. The rise of agentic AI is redefining how we think about enterprise infrastructure.\n\nUiPath\u2019s new role highlights essential strategies for automation professionals:\n\n- Prioritize integration: Ensure your AI agents seamlessly connect with existing workflows.\n- Focus on data integrity: Clean, structured data fuels effective AI decision-making.\n- Invest in scalability: Design systems that can adapt as business needs evolve.\n- Emphasize security: Protect sensitive data as automation becomes more pervasive.\n- Train your team: Equip staff with skills to operate and optimize new AI capabilities.\n\nWhat this means: As automation becomes foundational, aligning your strategies with agentic AI's potential is crucial.\n\nHow are you adapting your automation processes to leverage this new infrastructure? \n\n#AI #Automation #RPA #UiPath #EnterpriseAI",
-    "created_at_utc": "2026-06-14T07:59:49.743221+00:00",
-    "last_updated_utc": "2026-06-14T07:59:49.743238+00:00"
-  },
+  "pending_approval": null,
   "regeneration_count": 0
 }
