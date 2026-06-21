@@ -66,6 +66,15 @@
       "approved_at_utc": "2026-06-14T08:04:42.197434+00:00"
     }
   ],
-  "pending_approval": null,
+  "pending_approval": {
+    "approval_id": "6b684eb69ca7",
+    "topic_title": "OpenAI Codex Automation Gains Record and Replay: Show It Once, Skip the Script - Tech Times",
+    "topic_summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxQS190UkczTUVJZmFDYnFId1hpbHo1S2tZdTU4QWZYcEJEVlVBN2hkNkJ6ckVXWjRKZnBZOWlvY3VRNUEydXhobWRob3hkc1R1NzJ1WU5UUWMtY09ZQTV0QnZnY2VHMzRmbXRENEVwUUcyelZsTlJJSzhmSkVheHdNTU1GZkVnMnRKZGhTSmNkbmpPTmw0UHZiSEJyYjlKUWw5YUdFM0M4Q2NROFF4V0FBRFpYSGtwSlRNNWZTUXBLUkY?oc=5\" target=\"_blank\">OpenAI Codex Automation Gains Record and Replay: Show It Once, Skip the Script</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Tech Times</font>",
+    "source_link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQS190UkczTUVJZmFDYnFId1hpbHo1S2tZdTU4QWZYcEJEVlVBN2hkNkJ6ckVXWjRKZnBZOWlvY3VRNUEydXhobWRob3hkc1R1NzJ1WU5UUWMtY09ZQTV0QnZnY2VHMzRmbXRENEVwUUcyelZsTlJJSzhmSkVheHdNTU1GZkVnMnRKZGhTSmNkbmpPTmw0UHZiSEJyYjlKUWw5YUdFM0M4Q2NROFF4V0FBRFpYSGtwSlRNNWZTUXBLUkY?oc=5",
+    "selection_reason": "This article addresses practical challenges faced by automation builders and AI practitioners, specifically focusing on overcoming barriers to implementation. It highlights the integration of AI navigation into RPA, which is crucial for enhancing user experience and streamlining workflows in enterprise automation. This topic is highly relevant for professionals looking to modernize their RPA solutions and improve operational efficiency.",
+    "post_text": "Skip the script\u2014automation just got a lot easier.\n\nOpenAI Codex now enables record and replay capabilities, transforming how we build workflows.\n\n- Train your AI agents visually; show them once, and they learn the task.\n- Minimize documentation overhead by reducing the need for extensive scripting.\n- Enhance user experience with AI-driven navigation in RPA tools.\n- Streamline onboarding by letting new users interact with a guided AI instead of manuals.\n\nWhat this means: You can save time and resources while improving efficiency in automation projects.\n\nHow are you planning to integrate record and replay in your workflows? \n\n#Automation #AI #RPA #WorkflowOptimization #OpenAI",
+    "created_at_utc": "2026-06-21T08:13:37.343345+00:00",
+    "last_updated_utc": "2026-06-21T08:13:37.343365+00:00"
+  },
   "regeneration_count": 0
 }
