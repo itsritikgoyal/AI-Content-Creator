@@ -44,29 +44,73 @@ class TopicSelector:
                 {
                     "role": "system",
                     "content": (
-                        "You are a senior content strategist for AI agents, RPA, and enterprise automation."
-                        " Pick one topic that will perform strongly with automation builders, AI agents "
-                        "practitioners, and enterprise AI operators on LinkedIn."
+                        "You are a Senior Enterprise Automation Architect and AI Strategy Advisor. "
+                        "Your audience consists of automation engineers, AI Agent developers, "
+                        "RPA architects, solution architects, and enterprise technology leaders. "
+                        "Your job is to identify the ONE topic that offers the highest practical value "
+                        "for professionals building or deploying AI and automation systems. "
+                        "Ignore clickbait and focus on topics that teach something useful. "
+                        "Never optimize for sensational headlines."
                     ),
                 },
                 {
                     "role": "user",
                     "content": (
-                        "Select the most relevant topic for automation and AI agents professionals on LinkedIn.\n"
-                        "Prioritize practical enterprise impact, agentic workflows, RPA modernization, "
-                        "AI operations, and implementation lessons over generic market-size news.\n\n"
-                        "Return JSON with keys: selected_title, reason.\n\n"
+                        "Choose ONE topic that is most valuable for enterprise AI and automation professionals.\n\n"
+                    
+                        "Ranking priorities (highest to lowest):\n"
+                        "1. Practical implementation lessons\n"
+                        "2. AI Agents and agentic workflows\n"
+                        "3. Enterprise automation\n"
+                        "4. RPA modernization\n"
+                        "5. LLM applications\n"
+                        "6. AI governance, security, compliance\n"
+                        "7. Productivity improvements\n"
+                        "8. Engineering best practices\n\n"
+                    
+                        "Avoid selecting articles that are mainly about:\n"
+                        "- Company funding\n"
+                        "- Stock prices\n"
+                        "- Market reports\n"
+                        "- Executive appointments\n"
+                        "- Product marketing\n"
+                        "- Press releases\n"
+                        "- Generic AI hype\n\n"
+                    
+                        "Prefer topics containing:\n"
+                        "- Enterprise deployment lessons\n"
+                        "- Technical architecture\n"
+                        "- Real customer use cases\n"
+                        "- AI orchestration\n"
+                        "- Multi-agent systems\n"
+                        "- MCP\n"
+                        "- Workflow automation\n"
+                        "- Human-in-the-loop\n"
+                        "- AI evaluation\n"
+                        "- Observability\n"
+                        "- Governance\n"
+                        "- Prompt engineering\n"
+                        "- Production AI systems\n\n"
+                    
+                        "Return ONLY valid JSON.\n\n"
+                    
+                        "Format:\n"
+                        "{\n"
+                        '  "selected_title": "...",\n'
+                        '  "reason": "..."\n'
+                        "}\n\n"
+                    
                         f"Candidates:\n{prompt}"
                     ),
                 },
             ],
-            temperature=0.2,
+            temperature=0,
         )
 
         content = response.choices[0].message.content or "{}"
         payload = json.loads(content)
         selected_title = payload.get("selected_title", "").strip().lower()
-        reason = payload.get("reason", "High relevance for enterprise AI professionals.").strip()
+        reason = payload.get("reason", "Reason should explain WHY the topic matters in 20-40 words. Mention enterprise impact or implementation value.").strip()
 
         for item in items:
             if item.title.strip().lower() == selected_title:
