@@ -111,6 +111,15 @@
       "approved_at_utc": "2026-07-13T10:42:19.485155+00:00"
     }
   ],
-  "pending_approval": null,
+  "pending_approval": {
+    "approval_id": "9ba6b7d2bbe9",
+    "topic_title": "Invest in skills, not just AI, says Prof Henrik von Scheel - United News of Bangladesh",
+    "topic_summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxNc3lHTjNkeGZsWmFhOU0xdmpSQlJVNk5vSzlMbV9tUksxYVV1N2VNd2F6YzdTMzV4dW1KT3lPWWM3N3BfZmZPelBoajJRYXI0MDJUYjExa1VwNml5UnFmRHE2VlpfdFBkOVZtbWdLa2JFOThURnlOTVluOHpSeW9HUUlyS01zVnlMQVV6MmtkY19kWmZyNW4wRUVNN01mOVR0cEtqUw?oc=5\" target=\"_blank\">Invest in skills, not just AI, says Prof Henrik von Scheel</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">United News of Bangladesh</font>",
+    "source_link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNc3lHTjNkeGZsWmFhOU0xdmpSQlJVNk5vSzlMbV9tUksxYVV1N2VNd2F6YzdTMzV4dW1KT3lPWWM3N3BfZmZPelBoajJRYXI0MDJUYjExa1VwNml5UnFmRHE2VlpfdFBkOVZtbWdLa2JFOThURnlOTVluOHpSeW9HUUlyS01zVnlMQVV6MmtkY19kWmZyNW4wRUVNN01mOVR0cEtqUw?oc=5",
+    "selection_reason": "This article discusses the strategic shift towards business orchestration in enterprise AI, providing practical insights into how organizations can integrate AI into their workflows effectively. It emphasizes the importance of orchestration in scaling AI initiatives, which is crucial for automation professionals looking to enhance their systems and processes.",
+    "post_text": "Is your AI strategy just a shiny tool without the right talent? \n\nInvesting in technology is essential, but without skilled professionals, your initiatives will stall. \n\n- Focus on upskilling teams to handle AI orchestration effectively.\n- Encourage cross-functional collaboration to bridge gaps between IT and business units.\n- Implement continuous learning programs to keep pace with evolving AI capabilities.\n- Use real-world projects as training grounds; for instance, let teams automate a manual reporting process to build competence.\n- Measure success not just by tech implementation but by team readiness and adaptability.\n\nWhat I'd do next: Establish a mentorship program where experienced engineers guide junior staff through practical AI projects. This fosters a culture of learning and innovation.\n\nHow is your organization preparing its workforce for the AI future? \n\n#AI #Automation #RPA #WorkforceDevelopment #DigitalTransformation",
+    "created_at_utc": "2026-07-19T06:12:04.291765+00:00",
+    "last_updated_utc": "2026-07-19T06:12:04.291781+00:00"
+  },
   "regeneration_count": 0
 }
