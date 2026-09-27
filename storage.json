@@ -21,6 +21,7 @@
     "uipath (path), deloitte expand collaboration to integrate test cloud into ascend platform - insider monkey",
     "uipath shares surge with ai optimism ahead of earnings - techstock\u00b2",
     "uipath transitions into critical infrastructure for agentic ai era - harianbasis.co",
+    "why this cio won\u2019t let an ai agent take the blame - digital journal",
     "will maestro case and first gaap-profit quarter change uipath's (path) automation narrative - simplywall.st"
   ],
   "approved_posts": [
@@ -199,17 +200,16 @@
       "source_link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNdC1ITE9lUUN2U0VRZG1HcmtfUG9RYjBYa2tsd1lSZHc0eEZ5Y1BOQ3NVemR1aXFSdlUxTHFjdEJjOE16amFJZFloa1BLdTQwOXlZS0ZFZXhQV1h6ZFZ3V2s3Q1lkUVBVR1JfbGRXUlFnLU1aamQ5akowZXIyQnFtb3daLWZ4SUxXWnVrMDZOZnEwaFh0aDh3N181bWlsRGdKbml0SU1nTkRwalBvVUtYS19oM1Vfay1VcHNXUWdfNXJ6UDVYaF9fcDNLdndWam90NGl6V2lEenNVOFFZbjc5RTVkd1hHUlN3Wlo5aW9xMV9WekhudVF0dDk0TGluVTNyd0pzakJqZjlIMm96NWR5c252MjBXZUxv0gGYAkFVX3lxTE10LUhMT2VRQ3ZTRVFkbUdya19Qb1FiMFhra2x3WVJkdzR4RnljUE5Dc1V6ZHVpcVJ2VTFMcWN0QmM4TXpqYUlkWWhrUEt1NDA5eVlLRkVleFBXWHpkVndXazdDWWRRUFVHUl9sZFdSUWctTVpqZDlqSjBlcjJCcW1vd1otZnhJTFdadWswNk5mcTBoWHRoOHc3XzVtaWxEZ0puaXRJTWdORHBqUG9VS1hLX2gzVV9rLVVwc1dRZ181cnpQNVhoX19wM0t2d1Zqb3Q0aXpXaUR6c1U4UVluNzlFNWR3WEdSU3daWjlpb3ExX1Z6SG51UXR0OTRMaW5VM3J3SnNqQmpmOUgyb3o1ZHlzbnYyMFdlTG8?oc=5",
       "linkedin_post_id": "urn:li:share:7507360231652225024",
       "approved_at_utc": "2026-09-20T08:49:19.847088+00:00"
+    },
+    {
+      "approval_id": "87e8ba16bdbd",
+      "topic_title": "Why this CIO won\u2019t let an AI agent take the blame - Digital Journal",
+      "post_text": "Why are we so quick to blame AI agents for failures? It\u2019s time to rethink accountability in automation.\n\nAs AI agents integrate deeper into enterprise workflows, understanding their limitations is crucial.\n\n- AI is a tool, not a decision-maker. Human oversight is essential.\n- Clear responsibility must be defined at the outset of any automation project.\n- Continuous monitoring and feedback loops are vital for refining AI performance.\n- Training and data quality directly impact AI outcomes; invest accordingly.\n- Consider a hybrid approach where human and AI collaborate for better results.\n\nFor example, a financial services firm saw a drop in compliance errors after implementing AI for document processing, but they paired it with a dedicated team to oversee and validate outputs.\n\nWhat I'd do next: Establish a framework for accountability that includes both AI performance metrics and human oversight protocols to ensure alignment and trust.\n\nHow do you ensure accountability in your AI projects? \n\n#AI #Automation #RPA #EnterpriseAI #DigitalTransformation",
+      "source_link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOM09MMElES0RYUnpqMGlzRmdFYmVJZDM3UnBXMVVNNUJXSy1fZ2xaajFpb2s4eVJwcnF3dlhGcWZaOXZDa0YyVGZKUDJrZ0ppTkt5LTdickVreThMWklycXFaanJQWVA4QUlYOVhhWnRUZ0RaMVNiU0h2SVNDYkM1QWltWXd4dnpySXVOZ1lGbHhMdw?oc=5",
+      "linkedin_post_id": "urn:li:share:7509907581746950144",
+      "approved_at_utc": "2026-09-27T09:31:35.193638+00:00"
     }
   ],
-  "pending_approval": {
-    "approval_id": "87e8ba16bdbd",
-    "topic_title": "Why this CIO won\u2019t let an AI agent take the blame - Digital Journal",
-    "topic_summary": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxOM09MMElES0RYUnpqMGlzRmdFYmVJZDM3UnBXMVVNNUJXSy1fZ2xaajFpb2s4eVJwcnF3dlhGcWZaOXZDa0YyVGZKUDJrZ0ppTkt5LTdickVreThMWklycXFaanJQWVA4QUlYOVhhWnRUZ0RaMVNiU0h2SVNDYkM1QWltWXd4dnpySXVOZ1lGbHhMdw?oc=5\" target=\"_blank\">Why this CIO won\u2019t let an AI agent take the blame</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Digital Journal</font>",
-    "source_link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOM09MMElES0RYUnpqMGlzRmdFYmVJZDM3UnBXMVVNNUJXSy1fZ2xaajFpb2s4eVJwcnF3dlhGcWZaOXZDa0YyVGZKUDJrZ0ppTkt5LTdickVreThMWklycXFaanJQWVA4QUlYOVhhWnRUZ0RaMVNiU0h2SVNDYkM1QWltWXd4dnpySXVOZ1lGbHhMdw?oc=5",
-    "selection_reason": "This topic provides practical implementation lessons through real customer use cases, focusing on the integration of AI agents into enterprise workflows. It addresses the challenges and successes of deploying AI agents, which is crucial for professionals looking to enhance automation systems and improve operational efficiency.",
-    "post_text": "Why are we so quick to blame AI agents for failures? It\u2019s time to rethink accountability in automation.\n\nAs AI agents integrate deeper into enterprise workflows, understanding their limitations is crucial.\n\n- AI is a tool, not a decision-maker. Human oversight is essential.\n- Clear responsibility must be defined at the outset of any automation project.\n- Continuous monitoring and feedback loops are vital for refining AI performance.\n- Training and data quality directly impact AI outcomes; invest accordingly.\n- Consider a hybrid approach where human and AI collaborate for better results.\n\nFor example, a financial services firm saw a drop in compliance errors after implementing AI for document processing, but they paired it with a dedicated team to oversee and validate outputs.\n\nWhat I'd do next: Establish a framework for accountability that includes both AI performance metrics and human oversight protocols to ensure alignment and trust.\n\nHow do you ensure accountability in your AI projects? \n\n#AI #Automation #RPA #EnterpriseAI #DigitalTransformation",
-    "created_at_utc": "2026-09-27T09:25:16.923727+00:00",
-    "last_updated_utc": "2026-09-27T09:25:16.923742+00:00"
-  },
+  "pending_approval": null,
   "regeneration_count": 0
 }
