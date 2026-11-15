@@ -255,6 +255,15 @@
       "approved_at_utc": "2026-11-08T10:46:12.110762+00:00"
     }
   ],
-  "pending_approval": null,
+  "pending_approval": {
+    "approval_id": "3e6251abd424",
+    "topic_title": "Why orchestration will define enterprise AI at scale - DQ",
+    "topic_summary": "<a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxNQkNaeWx5TmY3YWpqclliYkYzWmlLTTczRVBMWHA2UXZVUEItVTlZQTh5VEpXS0k0UVRVMUtsanR1UDJhNW5FZURnTmJQSjk0M0J6QUpjWDhfOUFuTFdUS0tMWjE3QnAwTUdjTjZQMERsejVxdFFXa2FvZUt0R1hMb0JES3dMNHBqRVBHZG5Sd2RQNG_SAZMBQVVfeXFMTUJDWnlseU5mN2FqanJZYmJGM1ppS003M0VQTFhwNlF2VVBCLVU5WUE4eVRKV0tJNFFUVTFLbGp0dVAyYTVuRWVEZ05iUEo5NDNCekFKY1g4XzlBbkxXVEtLTFoxN0JwME1HY042UDBEbHo1cXRRV2thb2VLdEdYTG9CREt3TDRwakVQR2RuUndkUDRv?oc=5\" target=\"_blank\">Why orchestration will define enterprise AI at scale</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">DQ</font>",
+    "source_link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNQkNaeWx5TmY3YWpqclliYkYzWmlLTTczRVBMWHA2UXZVUEItVTlZQTh5VEpXS0k0UVRVMUtsanR1UDJhNW5FZURnTmJQSjk0M0J6QUpjWDhfOUFuTFdUS0tMWjE3QnAwTUdjTjZQMERsejVxdFFXa2FvZUt0R1hMb0JES3dMNHBqRVBHZG5Sd2RQNG_SAZMBQVVfeXFMTUJDWnlseU5mN2FqanJZYmJGM1ppS003M0VQTFhwNlF2VVBCLVU5WUE4eVRKV0tJNFFUVTFLbGp0dVAyYTVuRWVEZ05iUEo5NDNCekFKY1g4XzlBbkxXVEtLTFoxN0JwME1HY042UDBEbHo1cXRRV2thb2VLdEdYTG9CREt3TDRwakVQR2RuUndkUDRv?oc=5",
+    "selection_reason": "This topic focuses on the practical implementation of orchestration in enterprise AI systems, which is crucial for scaling AI solutions effectively. It addresses real-world deployment lessons and the technical architecture necessary for integrating AI workflows, making it highly relevant for professionals involved in building and deploying AI and automation systems.",
+    "post_text": "Are we underestimating the power of orchestration in enterprise AI? Many teams still treat AI components as isolated tools rather than integrated systems.\n\nOrchestration is the backbone of scaling AI solutions effectively. \n\n- It ensures smooth interactions between AI models, RPA bots, and workflows, reducing friction.\n- A well-orchestrated system can adapt to changing business needs in real-time.\n- Centralized monitoring allows for quick identification of bottlenecks and inefficiencies.\n- Consider an e-commerce platform using AI for inventory predictions; if the AI isn't orchestrated with the supply chain workflow, stockouts can occur despite accurate forecasts.\n\nWhat I'd do next: Invest in orchestration platforms that provide visibility across AI processes and allow for easy adjustments. This will ensure your AI efforts are aligned with business objectives and can evolve as needed.\n\nHow are you currently approaching orchestration in your AI projects?\n\n#EnterpriseAI #Automation #Orchestration #RPA #WorkflowAutomation",
+    "created_at_utc": "2026-11-15T11:18:57.704372+00:00",
+    "last_updated_utc": "2026-11-15T11:18:57.704386+00:00"
+  },
   "regeneration_count": 0
 }
